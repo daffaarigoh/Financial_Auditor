@@ -1,0 +1,10 @@
+INVOICE NO: INV-2026-006
+DATE: 2026-08-06
+VENDOR: CV Hardware Central
+ITEM 1: Monitor 27 Inch 4K (Qty: 2) @ Rp 4.000.000 = Rp 8.000.000
+SUBTOTAL: Rp 8.000.000
+PPN (11%): Rp 880.000
+TOTAL: Rp 8.880.000
+STAMP: YES
+SIGNATURE: NO
+NOTES: ANOMALY TEST - Tidak ada tanda tangan manajer keuangan.

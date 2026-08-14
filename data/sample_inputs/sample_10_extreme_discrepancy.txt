@@ -1,0 +1,10 @@
+INVOICE NO: INV-2026-010
+DATE: 2026-08-10
+VENDOR: CV Fiktif Perkasa
+ITEM 1: Jasa Konsultasi IT (Qty: 1) = Rp 50.000.000
+SUBTOTAL: Rp 50.000.000
+PPN (11%): Rp 0
+TOTAL: Rp 75.000.000
+STAMP: NO
+SIGNATURE: NO
+NOTES: EXTREME ANOMALY - Total markup 25 juta, PPN 0, tanpa stempel & tanda tangan.

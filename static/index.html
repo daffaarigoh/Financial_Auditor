@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Auditor — Enterprise AI Platform</title>
+  <meta name="description" content="Platform audit dokumen keuangan berbasis Multi-Agent AI dengan OCR, Vision, dan analisis anomali otomatis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── Header ─────────────────────────────────────────────────────────── -->
+    <header class="header">
+      <div class="header-brand">
+        <div class="header-icon">🧾</div>
+        <div>
+          <h1 class="header-title">Financial Auditor</h1>
+          <p class="header-sub">Enterprise Multimodal AI Platform</p>
+        </div>
+      </div>
+
+      <div class="header-models" id="model-badges">
+        <span class="model-badge loading" id="badge-ocr">ocr-lighton</span>
+        <span class="model-badge loading" id="badge-vision">qwen-35b-vision</span>
+        <span class="model-badge loading" id="badge-auditor">qwen-35b</span>
+        <span class="model-badge loading" id="badge-reporter">nemotron-35</span>
+      </div>
+
+      <div class="header-actions">
+        <div class="stat-pill" id="stat-total"><span class="stat-num" id="stat-n-total">–</span><span>Total Audit</span></div>
+        <div class="stat-pill valid" id="stat-valid"><span class="stat-num" id="stat-n-valid">–</span><span>Valid</span></div>
+        <div class="stat-pill anomaly" id="stat-anomaly"><span class="stat-num" id="stat-n-anomaly">–</span><span>Anomali</span></div>
+        <button class="btn-ghost" id="btn-history" onclick="openHistory()">📜 Riwayat</button>
+      </div>
+    </header>
+
+    <!-- ── Main ───────────────────────────────────────────────────────────── -->
+    <main class="main">
+
+      <!-- Upload Section (default view) -->
+      <section id="section-upload" class="section-upload">
+        <div class="upload-hero">
+          <h2 class="upload-title">Upload Dokumen Keuangan</h2>
+          <p class="upload-desc">Drag & drop atau klik untuk memilih file — Invoice, Nota, Laporan (PDF, PNG, JPG, TXT, JSON)</p>
+        </div>
+
+        <div class="upload-zone" id="upload-zone"
+             onclick="document.getElementById('file-input').click()"
+             ondragover="onDragOver(event)"
+             ondragleave="onDragLeave(event)"
+             ondrop="onDrop(event)">
+          <div class="upload-icon">📂</div>
+          <p class="upload-zone-text">Klik atau seret file ke sini</p>
+          <p class="upload-zone-hint">PDF · PNG · JPG · TXT · JSON</p>
+          <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg,.txt,.json" hidden onchange="onFileSelect(event)" />
+        </div>
+
+        <div class="upload-selected hidden" id="upload-selected">
+          <div class="file-card" id="file-card">
+            <span class="file-icon" id="file-icon">📄</span>
+            <div class="file-info">
+              <span class="file-name" id="file-name">—</span>
+              <span class="file-size" id="file-size">—</span>
+            </div>
+            <button class="btn-remove" onclick="resetUpload()">✕</button>
+          </div>
+          <button class="btn-primary" id="btn-start" onclick="startAudit()">
+            <span>🚀 Jalankan Audit Pipeline</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Audit Section (shown during/after audit) -->
+      <section id="section-audit" class="section-audit hidden">
+        <div class="audit-grid">
+
+          <!-- Left: Pipeline Tracker + Preview -->
+          <div class="left-panel">
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3>⚡ Pipeline Progress</h3>
+                <button class="btn-ghost-sm" onclick="resetAudit()">+ Audit Baru</button>
+              </div>
+
+              <!-- File preview -->
+              <div class="file-preview" id="file-preview"></div>
+
+              <!-- Steps -->
+              <div class="pipeline-steps">
+                <div class="pipeline-step" id="step-1">
+                  <div class="step-dot"></div>
+                  <div class="step-connector"></div>
+                  <div class="step-content">
+                    <div class="step-label">Sub-Agent 1: OCR</div>
+                    <div class="step-model">ocr-lighton / qwen-35b-vision</div>
+                    <div class="step-status" id="step-1-status">Menunggu…</div>
+                  </div>
+                </div>
+                <div class="pipeline-step" id="step-2">
+                  <div class="step-dot"></div>
+                  <div class="step-connector"></div>
+                  <div class="step-content">
+                    <div class="step-label">Sub-Agent 2: Visual Inspection</div>
+                    <div class="step-model">qwen-35b-vision</div>
+                    <div class="step-status" id="step-2-status">Menunggu…</div>
+                  </div>
+                </div>
+                <div class="pipeline-step" id="step-3">
+                  <div class="step-dot"></div>
+                  <div class="step-connector"></div>
+                  <div class="step-content">
+                    <div class="step-label">Sub-Agent 3: Financial Auditor</div>
+                    <div class="step-model">qwen-35b</div>
+                    <div class="step-status" id="step-3-status">Menunggu…</div>
+                  </div>
+                </div>
+                <div class="pipeline-step" id="step-4">
+                  <div class="step-dot"></div>
+                  <div class="step-content">
+                    <div class="step-label">Sub-Agent 4: Reporter</div>
+                    <div class="step-model">nemotron-35</div>
+                    <div class="step-status" id="step-4-status">Menunggu…</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress bar -->
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+                </div>
+                <span class="progress-label" id="progress-label">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Results -->
+          <div class="right-panel" id="results-panel">
+            <div class="results-placeholder" id="results-placeholder">
+              <div class="pulse-ring"></div>
+              <p>Menunggu hasil audit…</p>
+            </div>
+            <div class="results-content hidden" id="results-content"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── History Modal ──────────────────────────────────────────────────── -->
+    <div class="modal-overlay hidden" id="modal-overlay" onclick="closeHistory()">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <h3>📜 Riwayat Audit</h3>
+          <div class="modal-header-actions">
+            <button class="btn-ghost-sm" id="btn-export" onclick="exportExcel()">📥 Export Excel</button>
+            <button class="btn-ghost-sm btn-danger-sm" id="btn-clear-history" onclick="clearHistory()">🗑️ Hapus Riwayat</button>
+            <button class="btn-ghost-sm" onclick="closeHistory()">✕ Tutup</button>
+          </div>
+        </div>
+        <div class="modal-body" id="history-body">
+          <p class="text-muted">Memuat data…</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

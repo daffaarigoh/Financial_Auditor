@@ -1,0 +1,10 @@
+INVOICE NO: INV-2026-008
+DATE: 2026-08-08
+VENDOR: PT Solusi Digital Prima
+ITEM 1: Lisensi Software Database (Qty: 1) = Rp 30.000.000
+SUBTOTAL: Rp 30.000.000
+PPN (11%): Rp 3.300.000
+TOTAL: Rp 38.000.000
+STAMP: NO
+SIGNATURE: YES
+NOTES: DOUBLE ANOMALY - Total salah hitung (harusnya 33.3jt) + Tidak ada stempel!

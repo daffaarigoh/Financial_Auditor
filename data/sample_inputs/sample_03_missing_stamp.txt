@@ -1,0 +1,10 @@
+INVOICE NO: INV-2026-003
+DATE: 2026-08-03
+VENDOR: CV Bina Karya Utama
+ITEM 1: Renovasi Ruang Server (Qty: 1) = Rp 5.000.000
+SUBTOTAL: Rp 5.000.000
+PPN (11%): Rp 550.000
+TOTAL: Rp 5.550.000
+STAMP: NO
+SIGNATURE: YES
+NOTES: ANOMALY TEST - Dokumen fisik tidak memiliki stempel basah perusahaan.

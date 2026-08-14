@@ -1,0 +1,10 @@
+INVOICE NO: INV-2026-009
+DATE: 2026-08-09
+VENDOR: PT Network Solution Indonesia
+ITEM 1: Managed Switch 48 Port (Qty: 3) @ Rp 15.000.000 = Rp 45.000.000
+SUBTOTAL: Rp 45.000.000
+PPN (11%): Rp 4.950.000
+TOTAL: Rp 49.950.000
+STAMP: YES
+SIGNATURE: YES
+NOTES: Pengadaan switch jaringan enterprise valid.

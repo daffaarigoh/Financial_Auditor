@@ -1,0 +1,10 @@
+INVOICE NO: INV-2026-007
+DATE: 2026-08-07
+VENDOR: CV Alat Tulis Serba Ada
+ITEM 1: Kertas A4 & Perlengkapan Kantor = Rp 3.500.000
+SUBTOTAL: Rp 3.500.000
+PPN (11%): Rp 385.000
+TOTAL: Rp 3.885.000
+STAMP: YES
+SIGNATURE: YES
+NOTES: Pengadaan ATK bulanan valid.

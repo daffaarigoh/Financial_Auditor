@@ -1,0 +1,14 @@
+{
+  "vendor_name": "PT Maju Teknologi Nusantara",
+  "invoice_number": "INV-2026-08-001",
+  "invoice_date": "2026-08-10",
+  "line_items": [
+    {"description": "Laptop ASUS ExpertBook B9", "qty": 3, "unit_price": 18500000.0, "total": 55500000.0},
+    {"description": "Monitor LG 27 inch 4K", "qty": 3, "unit_price": 6200000.0, "total": 18600000.0},
+    {"description": "Mechanical Keyboard Logitech MX", "qty": 5, "unit_price": 1350000.0, "total": 6750000.0}
+  ],
+  "subtotal": 80850000.0,
+  "tax_amount": 8085000.0,
+  "total_amount": 88935000.0,
+  "currency": "IDR"
+}
