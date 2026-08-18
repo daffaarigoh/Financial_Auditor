@@ -1,0 +1,19 @@
+{
+  "vendor_name": "CV Multi Usaha Sejahtera",
+  "invoice_number": "INV-ERR-4040",
+  "invoice_date": "2026-08-12",
+  "subtotal": 10000000.0,
+  "tax_amount": 1100000.0,
+  "total_amount": 15000000.0,
+  "line_items": [
+    {
+      "description": "Pengadaan ATK dan Kertas Kantor",
+      "quantity": 10,
+      "unit_price": 500000.0,
+      "total": 5000000.0
+    }
+  ],
+  "has_company_stamp": false,
+  "has_signature": false,
+  "notes": "Sample anomaly invoice: Total mismatch (15,000,000 vs 11,100,000), line items sum mismatch, and missing stamps/signatures."
+}

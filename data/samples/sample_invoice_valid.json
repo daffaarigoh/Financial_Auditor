@@ -1,0 +1,25 @@
+{
+  "vendor_name": "PT Sinar Teknologi Nusantara",
+  "invoice_number": "INV-2026-0881",
+  "invoice_date": "2026-08-10",
+  "subtotal": 25000000.0,
+  "tax_amount": 2750000.0,
+  "total_amount": 27750000.0,
+  "line_items": [
+    {
+      "description": "Server Hosting & Cloud Infrastructure",
+      "quantity": 1,
+      "unit_price": 15000000.0,
+      "total": 15000000.0
+    },
+    {
+      "description": "Software Development & API Maintenance",
+      "quantity": 1,
+      "unit_price": 10000000.0,
+      "total": 10000000.0
+    }
+  ],
+  "has_company_stamp": true,
+  "has_signature": true,
+  "notes": "Sample valid invoice matching 11% PPN tax calculation."
+}

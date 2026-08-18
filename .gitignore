@@ -11,6 +11,9 @@ build/
 # Environment
 .env
 *.env.local
+.venv/
+venv/
+env/
 
 # Data directories (uploads & generated reports)
 data/uploads/*
@@ -27,6 +30,11 @@ data/reports/*
 .idea/
 *.swp
 *.swo
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
 
 # OS
 .DS_Store

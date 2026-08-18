@@ -1,10 +1,11 @@
 # 🧾 Enterprise Multimodal Financial Auditor
 
+[![CI Pipeline](https://github.com/daffaarigoh/Financial_Auditor/actions/workflows/ci.yml/badge.svg)](https://github.com/daffaarigoh/Financial_Auditor/actions/workflows/ci.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111%2B-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![SQLite](https://img.shields.io/badge/SQLite-Database-003B57.svg?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![OpenAI Compatible](https://img.shields.io/badge/LLM-OpenAI%20Compatible-412991.svg?logo=openai&logoColor=white)](https://platform.openai.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **Enterprise Multimodal Financial Auditor** adalah platform audit kepatuhan dan validasi dokumen keuangan (Invoice, Nota, Kwitansi, Laporan Keuangan) berbasis **Multi-Agent AI**. Sistem ini menggabungkan kemampuan **OCR (Optical Character Recognition)**, **Computer Vision Forensics**, **Validasi Matematika Deterministik**, serta **Deteksi Anomali & Fraud Kualitatif** menggunakan orkestrasi 4 agen AI spesialis.
 
@@ -196,9 +197,23 @@ Jalankan script verifikasi untuk memastikan semua model AI terhubung:
 python check_api.py
 ```
 
-### 6. Jalankan Aplikasi
+### 6. Jalankan Pengujian Otomatis (Unit & Integration Tests)
+Jalankan seluruh rangkaian test suite dengan `pytest`:
 ```bash
+# Menggunakan pytest langsung:
+pytest tests/ -v
+
+# Atau menggunakan Makefile:
+make test
+```
+
+### 7. Jalankan Aplikasi
+```bash
+# Menggunakan python langsung:
 python server.py
+
+# Atau menggunakan Makefile:
+make run
 ```
 Aplikasi akan berjalan pada **`http://localhost:8000`**. Buka tautan tersebut di browser Anda.
 
@@ -214,14 +229,15 @@ Aplikasi akan berjalan pada **`http://localhost:8000`**. Buka tautan tersebut di
 >
 > **File yang AMAN di-push ke GitHub:**
 > - [x] `.env.example` *(Hanya berisi placeholder template)*
-> - [x] `requirements.txt`
-> - [x] Seluruh kode program & file statis
+> - [x] `requirements.txt` & `requirements-dev.txt`
+> - [x] Seluruh kode program, tes (`tests/`), & file statis
 > 
 > **File yang OTOMATIS DIABAIKAN oleh Git:**
 > - [ ] `.env` *(Kunci rahasia Anda)*
 > - [ ] `data/*.db` *(Database SQLite lokal)*
 > - [ ] `data/uploads/*` *(File yang diunggah saat testing)*
 > - [ ] `data/reports/*` *(File Excel yang digenerate)*
+> - [ ] `.pytest_cache/` & `.coverage` *(Cache hasil testing)*
 
 ---
 
@@ -243,6 +259,9 @@ Aplikasi akan berjalan pada **`http://localhost:8000`**. Buka tautan tersebut di
 
 ```text
 financial_auditor/
+├── .github/
+│   └── workflows/
+│       └── ci.yml             # CI/CD GitHub Actions Automated Testing Workflow
 ├── server.py                  # FastAPI Backend Server & Route Endpoints
 ├── static/
 │   ├── index.html             # Antarmuka Dashboard Single Page App
@@ -261,13 +280,23 @@ financial_auditor/
 │   ├── db_handler.py          # Handler Database SQLite (CRUD & Context Manager)
 │   └── server.py              # Implementasi Fungsi Tool MCP (DB & Excel)
 ├── data/
-│   ├── sample_inputs/         # Berkas Contoh Uji Coba (PDF, PNG, JPG, TXT, JSON)
+│   ├── samples/               # Berkas Dummy Contoh Uji Coba (JSON Valid & Anomali)
 │   ├── uploads/               # Direktori File yang Diunggah (Git-ignored)
 │   └── reports/               # Direktori Hasil Ekspor Excel (Git-ignored)
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py            # Fixtures Database Temp & FastAPI TestClient
+│   ├── test_api.py            # Unit & Integration Test Endpoint FastAPI
+│   ├── test_auditor.py        # Unit Test Validasi Matematika & Anomali
+│   ├── test_db_handler.py     # Unit Test Handler Database SQLite
+│   └── test_json_parser.py    # Unit Test Ekstraktor & Pembersih JSON
 ├── check_api.py               # Script CLI Pengecekan Ketersediaan Model
+├── Makefile                   # Shortcut Perintah Developer (install, test, run, clean)
+├── LICENSE                    # Lisensi Resmi MIT
 ├── .env.example               # Template Konfigurasi Environment Publik
 ├── .gitignore                 # Daftar File/Folder yang Dikecualikan dari Git
-├── requirements.txt           # Daftar Dependensi Python
+├── requirements.txt           # Dependensi Produksi
+├── requirements-dev.txt       # Dependensi Pengembangan & Pengujian
 └── README.md                  # Dokumentasi Resmi Proyek
 ```
 
@@ -275,4 +304,4 @@ financial_auditor/
 
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah lisensi **MIT License** — silakan gunakan, kembangkan, dan modifikasi secara bebas untuk kebutuhan edukasi maupun komersial.
+Proyek ini dilisensikan di bawah lisensi [MIT License](LICENSE) — silakan gunakan, kembangkan, dan modifikasi secara bebas untuk kebutuhan edukasi maupun komersial.
